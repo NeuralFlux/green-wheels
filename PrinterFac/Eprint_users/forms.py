@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
 
     def clean_email(self):  # Define own cleaning method for organisations
         email_passed = self.cleaned_data.get('email')
-        if not email_passed.endswith('@iitdh.ac.in'):
+        if '@iitdh.ac.in' not in email_passed:
             raise forms.ValidationError("Invalid Email. Please register with your email registered to IIT Dharwad")
 
         return email_passed
@@ -54,7 +54,7 @@ class PrintForm(forms.ModelForm):
 
     class Meta:
         model = PrintDocs
-        fields = ['description', 'document', 'copies', ]
+        fields = ['description', 'document', 'colour', 'copies', ]
 
 
 class ConfirmForm(forms.ModelForm):  # Form for confirming print task

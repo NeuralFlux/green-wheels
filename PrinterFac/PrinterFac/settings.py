@@ -15,16 +15,17 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('EP_SECRET_KEY')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
+SECRET_KEY = 'd07c2ygv6x*lgzvz&r(+8pw&^65r1j@k@@j8djhu35@_p+v^ni'
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -40,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'background_task',
 ]
 
 MIDDLEWARE = [
@@ -132,24 +132,18 @@ LOGIN_REDIRECT_URL = 'baseApp-home'
 
 LOGIN_URL = 'login'  # Redirect with @login_required
 
-EASY_PRINT_MEDIA_DIR = 'media/documents/'  # Change the upload directory here
 
+EASY_PRINT_MEDIA_DIR = 'media/documents/'  # Change the upload directory here
 EASY_PRINT_MEDIA_HOST = 'http://localhost:80/'  # Server for Apache file uploads
 EASY_PRINT_MEDIA_UPLOAD_URL = EASY_PRINT_MEDIA_HOST + 'EP_upload_post.php'  # PHP script which handles the request
 EASY_PRINT_PRINTER_NAME = 'myprinter'  # lpadmin printer class name
 
 # Print Verification
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_SSL = True
-EMAIL_PORT = 465
-EMAIL_HOST_USER = os.environ.get('EP_EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EP_EMAIL_PASSWORD')
+EMAIL_HOST_USER = '' # Enter your email id here
+EMAIL_HOST_PASSWORD = '' # Enter email password here
+EMAIL_PORT = 25
 
-# DEFAULT_FROM_EMAIL = 'EasyPrintTeam <noreply@example.com>'
 
-API_KEY = os.environ.get('EP_API_KEY')
-API_PASS = os.environ.get('EP_API_PASS')
 
-# Background
-MAX_ATTEMPTS = 1

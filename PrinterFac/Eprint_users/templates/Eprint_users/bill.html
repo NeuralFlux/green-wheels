@@ -1,6 +1,5 @@
 {% extends "ground/base.html" %}
 {% load crispy_forms_tags %}
-{% load static %}
 {% block content %}
     <div class="content-below-nav container-fluid col-8">
         <center>
@@ -22,31 +21,15 @@
                         {% endfor %}
                         <tr>
                             <td class="dusty-grass-gradient" colspan="3"><strong>Grand
-                                Total: ₹{{ total_due_rupee }}</strong>
-                                <form method="POST">
-                                    {#        {% csrf_token %}#}
-                                    <script
-                                            src="https://checkout.razorpay.com/v1/checkout.js"
-                                            data-key="{{ api_key }}"
-                                            data-amount="{{ total_due }}"
-                                            data-buttontext="Pay"
-                                            data-name="EasyPrint"
-                                            data-description="Amount to be paid"
-                                            data-prefill.name="John Doe"
-                                            data-prefill.email="your_email@iitdh.ac.in"
-                                            data-theme.color="#267d7d"
-                                            data-image="{% static 'ground/favicon.png' %}"
-                                    ></script>
-                                    <input type="hidden" value="{{ dict_username }}" name="hidden">
-                                </form>
+                                Total: {{ total_due }}</strong>
+                                <a href="{% url 'payment' %}"><button class="small-btn btn btn-success" type="button">PAY</button> </a>
                             </td>
                         </tr>
                     </table>
                 </div>
-
             {% else %}
                 <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
-                    <h4 style="color: white;">All your bills have been paid for. Yippee!</h4>
+                <h4 style="color: white;">All your bills have been paid for. Yippee!</h4>
                 </div>
             {% endif %}
         </center>
