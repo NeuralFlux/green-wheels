@@ -1,0 +1,55 @@
+{% extends "ground/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <div class="content-below-nav container-fluid col-8">
+        <center>
+            {% if total_due > 0 %}
+                <h3>Payment Pending</h3><br><br>
+                <div class="table-responsive">
+                    <table class="table-borderless bill-table">
+                        <tr>
+                            <th>Document Name</th>
+                            <th>Date Added</th>
+                            <th>Price</th>
+                        </tr>
+                        {% for task in not_paid_tasks %}
+                            <tr>
+                                <td class="cloudy-knoxville-gradient">{{ task.file_name }}</td>
+                                <td class="cloudy-knoxville-gradient">{{ task.date_uploaded }}</td>
+                                <td class="cloudy-knoxville-gradient">{{ task.price }}</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="dusty-grass-gradient" colspan="3"><strong>Grand
+                                Total: ₹{{ total_due_rupee }}</strong>
+                                <form method="POST">
+                                    {#        {% csrf_token %}#}
+                                    <script
+                                            src="https://checkout.razorpay.com/v1/checkout.js"
+                                            data-key="{{ api_key }}"
+                                            data-amount="{{ total_due }}"
+                                            data-buttontext="Pay"
+                                            data-name="EasyPrint"
+                                            data-description="Amount to be paid"
+                                            data-prefill.name="John Doe"
+                                            data-prefill.email="your_email@iitdh.ac.in"
+                                            data-theme.color="#267d7d"
+                                            data-image="{% static 'ground/favicon.png' %}"
+                                    ></script>
+                                    <input type="hidden" value="{{ dict_username }}" name="hidden">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            {% else %}
+                <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
+                    <h4 style="color: white;">All your bills have been paid for. Yippee!</h4>
+                </div>
+            {% endif %}
+        </center>
+    </div>
+    </div>
+{% endblock content %}

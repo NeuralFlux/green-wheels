@@ -1,0 +1,251 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500);
+
+body {
+    margin: 0;
+    padding-top: 0;
+    border: 0;
+    background: url("bg-blue.jpg") fixed;
+    background-size: cover;
+}
+
+/*********************** To fit the background image ************************/
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+.text-black {
+    color: black;
+}
+
+th {
+    color: white;
+}
+
+.custom.text-muted {
+    color: rgba(218, 218, 218, 0.61) !important;
+}
+
+/************************************ Nav Bars *******************************/
+
+.my_nav_bar_logo {
+    color: white;
+    width: 20%;
+}
+
+@media only screen and (max-width: 600px) {
+    .my_nav_bar_logo {
+        width: 50%;
+    }
+}
+
+.my_nav_bar_small {
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 2%;
+    color: white;
+}
+
+.my_nav_bar_small li {
+    padding: 5%;
+    font-size: 5vw;
+}
+
+/************************************ Main elements *********************************/
+
+.content-below-nav {
+    margin-top: 120px;
+    min-height: 80vh;
+    margin-bottom: 10px;
+}
+
+.dual-wrapper {
+    width: 100%;
+    font-family: 'Alegreya Sans', sans-serif;
+    text-align: center;
+}
+
+.first-cont {
+    float: left;
+    color: white;
+    width: 100%;
+    height: 100vh;
+    line-height: 100vh;
+    background: linear-gradient(148deg, rgba(0, 18, 72, 1) 0%, rgba(0, 95, 134, 1) 28%, rgba(0, 224, 255, 1) 77%, rgba(255, 255, 255, 1) 99%);
+    /*background: #005F86 ;*/
+}
+
+.second-cont {
+    float: right;
+    color: rgba(40, 204, 255, 1);
+    width: 100%;
+    height: 100vh;
+    line-height: 100vh;
+    background-color: white;
+}
+
+.home-heading {
+    font-size: 40px;
+    transition: 300ms;
+}
+
+.first-cont:hover .home-heading {
+    font-size: 50px;
+    transition: ease-in 300ms;
+}
+
+.second-cont:hover .home-heading {
+    font-size: 50px;
+    transition: ease-in 300ms;
+}
+
+@media only screen and (max-width: 480px) {
+    .home-heading {
+        font-size: 28px;
+    }
+
+    .first-cont:hover .home-heading {
+        font-size: 35px;
+        transition: ease-in 300ms;
+    }
+
+    .second-cont:hover .home-heading {
+        font-size: 35px;
+        transition: ease-in 300ms;
+    }
+}
+
+.white-bg {
+    background: white;
+}
+
+/********************************* Tabs ********************************/
+
+.nav-tabs {
+    border: none !important;
+    margin: 3px;
+}
+
+/********************************* Misc *********************************/
+
+.small-btn.btn { /* Small Buttons */
+    padding: .4rem 1.5rem;
+    border-radius: 1rem;
+}
+
+.badge {
+    border-radius: 1rem;
+    padding: 0.4rem;
+}
+
+.col-md-6 {
+    text-align: center;
+    padding: 0;
+}
+
+.col-md-6 a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    background: black;
+}
+
+.action-btn {
+    font-size: 18px;
+    color: #000;
+}
+
+.razorpay-payment-button {
+    margin-top: 3px;
+    display: inline-block;
+    padding: .3rem 1.5rem;
+    font-size: small;
+    border-radius: 1rem;
+    background-color: #00c851!important;
+    color: #fff!important;
+    text-transform: uppercase;
+    white-space: normal;
+    word-wrap: break-word;
+    border: none;
+}
+
+
+/* ---------------------------------- Home page ends ------------------------------------*/
+
+.bill-table {
+    width: 80%;
+    text-align: center;
+    border-collapse: separate; /** Lit **/
+}
+
+.bill-table tr th {
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.bill-table tr td {
+    border-radius: 1rem;
+    padding: .4rem;
+    box-shadow: black;
+    margin-bottom: 2%;
+}
+
+.bill-table tr td {
+    background: rgba(0,0,0, 0.18);
+    color: #cbd9d5;
+    /*background: rgba(255,255,255,0.85);*/
+    /*color: black;*/
+}
+
+/* --------------------------------- Crispy Form Tags ----------------------------------- */
+.asteriskField {
+    color: #cc1111;
+    margin: 0 2px;
+}
+
+/* ---------------------------------- Footer --------------------------------------- */
+.print-footer {
+    min-height: 5vh;
+    line-height: 5vh;
+    overflow: hidden;
+}
+
+.print-footer .footer-copyright {
+    color: white;
+}
+
+.dev {
+    transform: translate(0%, -200%);
+    display: none;
+}
+
+.dev a {
+    color: #fff;
+}
+
+.print-footer:hover .dev {
+    display: block;
+    animation: dev-meet 1s ease-in-out forwards;
+}
+
+.print-footer:hover .institute {
+    animation: institute-run 1s ease-in-out forwards;
+}
+
+@keyframes dev-meet {
+    0% {
+        transform: translate(0%, -200%);
+    }
+    100% {
+        transform: translate(0%, -100%);
+    }
+}
+
+@keyframes institute-run {
+    0% {
+        transform: translate(0%, 0%);
+    }
+    100% {
+        transform: translate(0%, 100%);
+    }
+}
