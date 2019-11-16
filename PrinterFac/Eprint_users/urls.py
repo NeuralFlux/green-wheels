@@ -3,12 +3,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.history, name='users-history'),
-    path('upload/', views.print_upload, name='users-upload'),
     path('register/', views.register, name='users-register'),
     path('profile/', views.profile, name='users-profile'),
-    path('bill/', views.bill, name='users-bill'),
-    path('confirm/', views.confirm, name='users-confirm'),
+    path('passenger/', views.pass_det, name='users-pass'),
+    path('passenger/search/', views.pass_search, name='users-pass-search'),
+    path('host/', views.host_det, name='users-host'),
+    path('host/search/', views.host_search, name='users-host-search'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 ]
