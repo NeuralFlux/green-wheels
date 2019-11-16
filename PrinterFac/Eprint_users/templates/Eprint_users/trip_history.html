@@ -6,7 +6,7 @@
         <div class="card p-3 ">
             <div class="mt-2">
                 {% if cust %}
-                    <div class="card bg-warning my-5">
+                    <div class="card bg-light my-5">
                         <div class="card-body">
                             <center><h3 class="text-black">Passenger (Hosted By: {{ cust.request_to.task_by.username }})</h3></center>
                             From: {{ cust.pickup_loc }} <br>
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 {% elif host%}
-                    <div class="card bg-warning my-5">
+                    <div class="card bg-light my-5">
                         <div class="card-body">
                             <center><h3 class="text-black">Host</h3></center>
                             From: {{ host.source_point }} <br>
