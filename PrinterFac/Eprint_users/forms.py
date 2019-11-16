@@ -28,7 +28,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('bio', 'birth_date')
+        fields = ('wallet', 'birth_date')
 
 
 class HostSearchForm(forms.ModelForm):

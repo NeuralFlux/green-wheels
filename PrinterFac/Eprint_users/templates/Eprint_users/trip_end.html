@@ -1,0 +1,13 @@
+{% extends "ground/base.html" %}
+{% block content %}
+    <script>
+        const x = document.getElementsByTagName("BODY")[0];
+        x.classList.add("deep-blue-gradient");
+    </script>
+    <div class="container-fluid col-md-8 content-below-nav">
+        <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
+            <center><h4 class="text-black">This trip has been completed for you and a total of ₹{{ money }} has been
+                deducted from your wallet. Your balance is now: {{ bal }}</h4></center>
+        </div>
+    </div>
+{% endblock content %}

@@ -171,6 +171,44 @@ def activate(request, uidb64, token):
 
 
 @login_required
+def host_det(request):
+    if request.method == 'POST':
+
+        form = HostSearchForm(request.POST)
+        if form.is_valid():
+            ### GreenWheels
+            data = form.save(commit=False)
+            data.task_by = request.user
+
+            data.save()
+        return redirect('users-host-search')
+
+    else:
+        form = HostSearchForm()
+
+    return render(request, 'Eprint_users/host_det.html', {'form': form})
+
+
+@login_required
+def host_search(request):
+    if request.method == 'POST':
+        # Set the intended CustSearch object to true
+
+        cust_srch = CustSearch.objects.filter(pk=int(request.POST.get("cust_search_id")), completed=False).first()
+        cust_srch.host_accept = True
+        cust_srch.save()
+
+        CustSearch.objects.filter(host_accept=False).update(request_to=None)
+
+        return render(request, 'Eprint_users/host_ack.html', {'username': cust_srch.task_by.username})
+    else:
+        hst_srch = HostSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
+        requests_pen = CustSearch.objects.filter(request_to=hst_srch, host_accept=False, completed=False)
+
+    return render(request, 'Eprint_users/host_search.html', {'reqs': requests_pen})
+
+
+@login_required
 def pass_det(request):
     if request.method == 'POST':
 
@@ -202,11 +240,29 @@ def pass_search(request):
     else:
         hst_searches = HostSearch.objects.all().order_by('-start_time')
 
-    if CustSearch.objects.filter(task_by=request.user).order_by('-start_time').first().host_accept is True:
-        # Start Trip
-        pass
-
     return render(request, 'Eprint_users/pass_search.html', {'hosts': hst_searches})
+
+
+@login_required
+def trip(request):
+    if request.method == "POST":
+        cust_search = CustSearch.objects.filter(pk=request.POST.get("cust_end_id")).first()
+
+        cust_search.completed = True
+        cust_search.save()
+
+        # Calculate Deduction from Account
+        money = 10.00
+        cust_prof = cust_search.task_by.profile
+        cust_prof.wallet = float(cust_prof.wallet) - money
+        cust_prof.save()
+
+        return render(request, 'Eprint_users/trip_end.html', {'money': money, 'bal': cust_prof.wallet})
+
+    hst_search = HostSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
+    cust_searches = CustSearch.objects.filter(request_to__pk=hst_search.pk, completed=False)
+
+    return render(request, 'Eprint_users/trip.html', {'host': hst_search, 'custs': cust_searches})
 
 
 @login_required
@@ -245,45 +301,6 @@ def profile(request):
 #                       {'not_paid_tasks': unpaid, 'total_due': amount_due, 'total_due_rupee': amount_due / 100,
 #                        'dict_username': request.user.username, 'api_key': settings.API_KEY})
 #
-
-@login_required
-def host_det(request):
-    if request.method == 'POST':
-
-        form = HostSearchForm(request.POST)
-        if form.is_valid():
-
-            ### GreenWheels
-            data = form.save(commit=False)
-            data.task_by = request.user
-
-            data.save()
-        return redirect('users-host-search')
-
-    else:
-        form = HostSearchForm()
-
-    return render(request, 'Eprint_users/host_det.html', {'form': form})
-
-
-@login_required
-def host_search(request):
-    if request.method == 'POST':
-        # Set the intended CustSearch object to true
-
-        cust_srch = CustSearch.objects.filter(pk=int(request.POST.get("cust_search_id"))).first()
-        cust_srch.host_accept = True
-        cust_srch.save()
-
-        CustSearch.objects.filter(host_accept=False).update(request_to=None)
-
-        return render(request, 'Eprint_users/host_ack.html', {'username': cust_srch.task_by.username})
-    else:
-        hst_srch = HostSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
-        requests_pen = CustSearch.objects.filter(request_to=hst_srch)
-        print("Cpming INn hot")
-
-    return render(request, 'Eprint_users/host_search.html', {'reqs': requests_pen})
 
 
 def check_faculty(email):
