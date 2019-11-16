@@ -21,7 +21,7 @@ class Profile(models.Model):
     license_num = models.CharField(default='', max_length=15)
     aadhar_num = models.CharField(default='', max_length=12)
     wallet = models.DecimalField(max_digits=6, decimal_places=2, default=100.00)
-    hash_url = models.UUIDField(default=uuid.uuid4, editable=False)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=3.00)
 
     def __str__(self):
         return f'{self.user.username} Profile'
@@ -45,6 +45,10 @@ class HostSearch(models.Model):
     seats_vac = models.IntegerField(default=1)
     start_time = models.DateTimeField(auto_now_add=True, editable=False)
     task_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    completed = models.BooleanField(default=False)
+    charge = models.DecimalField(max_digits=4, decimal_places=2, default=30.00)
+    rating1= models.DecimalField(max_digits=3, decimal_places=2, default=3.00)
+    rating2 = models.DecimalField(max_digits=3, decimal_places=2, default=3.00)
 
     class Meta:
         verbose_name = 'HostSearch'  # Name of registered model in Admin panel
@@ -82,6 +86,8 @@ class CustSearch(models.Model):
     host_accept = models.BooleanField(default=False)
     completed = models.BooleanField(default=False)
     task_by = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    charge = models.DecimalField(max_digits=4, decimal_places=2, default=30.00)
+    rating = models.DecimalField(max_digits=3, decimal_places=2, default=3.00)
 
     # def __str__(self):  # How to Display a CustSearch object
     #     return self.document.name

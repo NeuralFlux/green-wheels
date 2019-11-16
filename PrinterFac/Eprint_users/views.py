@@ -1,5 +1,6 @@
 import datetime
 import os
+import random
 import smtplib
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -147,9 +148,6 @@ def activate(request, uidb64, token):
         login(request, user)
         # delete test
         # Launch Background to check if docs printed
-        if check_faculty(user.email):
-            user.profile.is_faculty = True
-            user.profile.save()
 
         return render(request, 'ground/check_ack.html', {'valid_registration': True})
     else:
@@ -176,6 +174,10 @@ def host_det(request):
 
         form = HostSearchForm(request.POST)
         if form.is_valid():
+            if request.user.profile.aadhar_verified is not True or request.user.profile.license_verified is not True:
+                form.add_error('source_point', "Documents not Verified. Please Try again after getting them verified.")
+                return render(request, 'Eprint_users/host_det.html', {'form': form})
+
             ### GreenWheels
             data = form.save(commit=False)
             data.task_by = request.user
@@ -214,6 +216,10 @@ def pass_det(request):
 
         form = CustSearchForm(request.POST)
         if form.is_valid():
+            if request.user.profile.aadhar_verified is not True:
+                form.add_error('pickup_loc', "Aadhar not Verified. Please Try again after getting it verified.")
+                return render(request, 'Eprint_users/pass_det.html', {'form': form})
+
             ### GreenWheels
             data = form.save(commit=False)
             data.task_by = request.user
@@ -229,6 +235,7 @@ def pass_det(request):
 
 @login_required
 def pass_search(request):
+    cust_obj = CustSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
     if request.method == 'POST':
         host = HostSearch.objects.filter(pk=request.POST.get('host_search_id')).first()
         cust_obj = CustSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
@@ -240,72 +247,113 @@ def pass_search(request):
     else:
         hst_searches = HostSearch.objects.all().order_by('-start_time')
 
+    if cust_obj.host_accept is True:
+        return redirect('users-trip')
+
     return render(request, 'Eprint_users/pass_search.html', {'hosts': hst_searches})
 
 
 @login_required
 def trip(request):
     if request.method == "POST":
-        cust_search = CustSearch.objects.filter(pk=request.POST.get("cust_end_id")).first()
+        if request.POST.get("cust_end_id") is not None:  # Customer Trip Complete
+            cust_search = CustSearch.objects.filter(pk=request.POST.get("cust_end_id")).first()
 
-        cust_search.completed = True
-        cust_search.save()
+            cust_search.completed = True
+            cust_search.save()
 
-        # Calculate Deduction from Account
-        money = 10.00
-        cust_prof = cust_search.task_by.profile
-        cust_prof.wallet = float(cust_prof.wallet) - money
-        cust_prof.save()
+            # Calculate Deduction from Account
+            money = random.randint(30, 60)
+            cust_search.charge = money
+            cust_search.save()
 
-        return render(request, 'Eprint_users/trip_end.html', {'money': money, 'bal': cust_prof.wallet})
+            cust_prof = cust_search.task_by.profile
+            cust_prof.wallet = float(cust_prof.wallet) - money
+            cust_prof.save()
 
-    hst_search = HostSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
+            return render(request, 'Eprint_users/trip_end.html', {'money': money, 'bal': cust_prof.wallet})
+        elif request.POST.get("cust_end_id") is None and request.POST.get("host_rating") is None and request.POST.get(
+                "cust_rating1") is None:  # Host Trip Complete
+            host_search = HostSearch.objects.filter(task_by__pk=request.user.pk).order_by('-start_time').first()
+
+            host_search.completed = True
+            host_search.save()
+
+            # Calculate Deduction from Account
+            money = random.randint(30, 60)
+            host_search.charge = money
+            host_search.save()
+
+            host_prof = host_search.task_by.profile
+            host_prof.wallet = float(host_prof.wallet) - money
+            host_prof.save()
+
+            return render(request, 'Eprint_users/trip_end.html', {'money_host': money, 'bal': host_prof.wallet})
+        elif request.POST.get("cust_end_id") is None and request.POST.get("host_rating") is not None:  # Customer Review
+            cust_search = CustSearch.objects.filter(task_by__pk=request.user.pk, completed=True).first()
+            host = cust_search.request_to.task_by.profile
+
+            cust_search.rating = int(request.POST.get("host_rating"))
+            cust_search.save()
+
+            host.rating = (float(host.rating) + int(request.POST.get("host_rating"))) / 2
+            host.save()
+
+            return render(request, 'Eprint_users/trip_end.html')
+        elif request.POST.get("cust_end_id") is None and request.POST.get("cust_rating1") is not None:  # Host Review
+            host_search = HostSearch.objects.filter(task_by__pk=request.user.pk, completed=True).first()
+            cust_searches = CustSearch.objects.filter(request_to=host_search, completed=True)
+            num_custs = cust_searches.count()
+
+            if num_custs > 1:
+                host_search.rating1 = int(request.POST.get("cust_rating1"))
+                host_search.save()
+
+                c1 = cust_searches.first().task_by.profile
+                c1.rating = (float(c1.rating) + int(request.POST.get("cust_rating1"))) / 2
+                c1.save()
+
+                host_search.rating2 = int(request.POST.get("cust_rating2"))
+                host_search.save()
+
+                c2 = cust_searches.last().task_by.profile
+                c2.rating = (float(c2.rating) + int(request.POST.get("cust_rating2"))) / 2
+                c2.save()
+            else:
+                host_search.rating1 = int(request.POST.get("cust_rating1"))
+                host_search.save()
+
+                c1 = cust_searches.first().task_by.profile
+                c1.rating = (float(c1.rating) + int(request.POST.get("cust_rating1"))) / 2
+                c1.save()
+            return render(request, 'Eprint_users/trip_end.html')
+
+    hst_search = HostSearch.objects.filter().order_by('-start_time').first()
     cust_searches = CustSearch.objects.filter(request_to__pk=hst_search.pk, completed=False)
 
-    return render(request, 'Eprint_users/trip.html', {'host': hst_search, 'custs': cust_searches})
+    reln = {}
+    reln['host'] = hst_search
+    if cust_searches.count() > 0:
+        reln['custs'] = cust_searches
+
+    return render(request, 'Eprint_users/trip.html', reln)
+
+
+@login_required
+def trip_hist(request):
+    hst_search = HostSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
+    cust_search = CustSearch.objects.filter(task_by=request.user).order_by('-start_time').first()
+
+    reln = {}
+    if hst_search is not None:
+        reln['host'] = hst_search
+    if cust_search is not None:
+        reln['cust'] = cust_search
+
+    return render(request, 'Eprint_users/trip_history.html', reln)
 
 
 @login_required
 def profile(request):
-    profile_form = ProfileForm(instance=request.user.profile)
-    if request.method == 'POST':
-        profile_form = ProfileForm(request.POST, instance=request.user.profile)
-        if profile_form.is_valid():
-            profile_form.save()
-
-    return render(request, 'Eprint_users/profile.html', {'form': profile_form})
-
-
-# @csrf_exempt
-# def bill(request):
-#     if request.method == 'POST':
-#
-#         username = request.POST.get('hidden')
-#         unpaid = PrintDocs.objects.filter(task_by__username=username, completed=True, paid=False, is_confirmed=True)
-#         amount_due = str(int(sum([i.price for i in unpaid]) * 100))
-#
-#         client = razorpay.Client(auth=(settings.API_KEY, settings.API_PASS))
-#         client.set_app_details({"title": "PrinterFac", "version": "2.0"})
-#
-#         payment_id = request.POST.get("razorpay_payment_id")
-#         client.payment.capture(payment_id, amount_due)
-#         unpaid.update(paid=True)
-#
-#         return redirect('users-bill')
-#
-#     else:
-#         unpaid = request.user.printdocs_set.filter(completed=True, paid=False, is_confirmed=True)
-#         amount_due = int(sum([i.price for i in unpaid]) * 100)
-#
-#         return render(request, 'Eprint_users/bill.html',
-#                       {'not_paid_tasks': unpaid, 'total_due': amount_due, 'total_due_rupee': amount_due / 100,
-#                        'dict_username': request.user.username, 'api_key': settings.API_KEY})
-#
-
-
-def check_faculty(email):
-    try:
-        int(email.split('@')[0])
-    except ValueError:
-        return True
-    return False
+    prof = Profile.objects.filter(pk=request.user.pk).first()
+    return render(request, 'Eprint_users/profile.html', {'profile': prof, 'rating': int(prof.rating * 20)})

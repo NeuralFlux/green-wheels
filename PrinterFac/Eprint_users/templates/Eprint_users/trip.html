@@ -14,6 +14,9 @@
                             Destination: {{ host.dest_point }} <br>
                             AC: {{ host.AC }} <br>
                             Seats Vacant: {{ host.seats_vac }} <br>
+                            <center>
+                                <button type="submit" class="btn btn-danger">End Carpool</button>
+                            </center>
                         </div>
                     </div>
                     {% for cust in custs %}
@@ -34,7 +37,9 @@
                     {% endfor %}
 
                     <center>
-                        <input id="imp_inp" type="hidden" name="cust_end_id">
+                        {% if custs %}
+                            <input id="imp_inp" type="hidden" name="cust_end_id">
+                        {% endif %}
                     </center>
                 </form>
             </div>

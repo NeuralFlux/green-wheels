@@ -1,5 +1,6 @@
 {% extends "ground/base.html" %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
     <script>
         const x = document.getElementsByTagName("BODY")[0];
@@ -9,20 +10,40 @@
         <div class="content-section card col-md-8 mx-auto">
             <div class="media">
                 <div class="media-body">
-                    <h2 style="text-transform: uppercase;" class="text-black account-heading">{{ user.username }}</h2>
+                    <h2 style="text-transform: uppercase; display: inline-block;"
+                        class="text-black account-heading">{{ user.username }}</h2>
+                    <h6 class="text-black" style="display: inline-block; vertical-align: middle;">
+                        <div style="float: right">
+                            Ratings: <span style="font-weight: bold;"
+                                           class="text-warning">{{ profile.rating }}</span> (
+                            <div class="stars-outer">
+                                <div style="width: {{ rating }}%" class="stars-inner"></div>
+                            </div>
+                            )
+                        </div>
+                    </h6>
                     <p class="text-secondary">{{ user.email }}</p>
                 </div>
             </div>
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Profile Info</legend>
-                    {{ form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Update</button>
-                </div>
-            </form>
+            <center>
+                Wallet Balance: <span class="text-success">₹{{ profile.wallet }}</span><br>
+                {% if profile.aadhar_verified %}
+                    Aadhar Verified ({{ profile.aadhar_num }}) <br>
+                {% else %}
+                    Aadhar Not Verified <br>
+                {% endif %}
+                {% if profile.license_verified %}
+                    License Verified ({{ profile.license_num }}) <br>
+                {% else %}
+                    License Not Verified <br>
+                {% endif %}
+
+            <a href="{% url 'users-trip-history' %}"><button class="btn btn-warning">Trip History</button></a>
+            </center>
+            <br><br><br><br>
+            <h3 class="text-black">Cars Owned:</h3>
+            <h5 class="text-black">Ertiga (Mileage: 12 kmpl, AC: Available)</h5>
+            <img height="169px" width="299px" src="{% static 'ground/ertiga.jpeg' %}">
         </div>
     </div>
 {% endblock content %}

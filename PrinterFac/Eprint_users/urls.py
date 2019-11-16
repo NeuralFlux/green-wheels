@@ -10,6 +10,7 @@ urlpatterns = [
     path('host/', views.host_det, name='users-host'),
     path('host/search/', views.host_search, name='users-host-search'),
     path('trip/', views.trip, name='users-trip'),
+    path('trip/history/', views.trip_hist, name='users-trip-history'),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         views.activate, name='activate'),
 ]

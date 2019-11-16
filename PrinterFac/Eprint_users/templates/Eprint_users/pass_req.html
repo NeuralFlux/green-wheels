@@ -6,8 +6,10 @@
     </script>
     <div class="container-fluid col-md-8 content-below-nav">
         <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
-            <center><h4 class="text-black">Request sent to {{ username }}. You will be redirected to the trip page as
-                soon as the host accepts your request.</h4></center>
+            <center>
+                <h4 class="text-black">Request sent to {{ username }}. Kindly visit this <a
+                        href="{% url 'users-trip' %}">link</a> to check if the host has accepted your request.</h4>
+            </center>
         </div>
     </div>
 {% endblock content %}

@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8c5d2ad-306c-4e7c-b063-6d2c5d4c67d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end_host.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_history.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eprint_users/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eprint_users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eprint_users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Eprint_users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Eprint_users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/baseApp/static/ground/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/baseApp/static/ground/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,36 +44,41 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="4" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.47" value="1" />
           <entry key="project.open.time.50" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="21" />
-          <entry key="py" value="16" />
+          <entry key="css" value="4" />
+          <entry key="html" value="41" />
+          <entry key="py" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="21" />
-          <entry key="Python" value="16" />
+          <entry key="CSS" value="4" />
+          <entry key="HTML" value="41" />
+          <entry key="Python" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Django Console" value="288" />
-          <entry key="html" value="1353" />
-          <entry key="py" value="3711" />
+          <entry key="css" value="120" />
+          <entry key="html" value="3142" />
+          <entry key="py" value="5234" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="1353" />
-          <entry key="Python" value="3999" />
+          <entry key="CSS" value="120" />
+          <entry key="HTML" value="3142" />
+          <entry key="Python" value="5522" />
         </counts>
       </usages-collector>
     </session>
@@ -79,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Eprint_users/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+            <state relative-caret-position="178">
+              <caret line="89" column="78" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -90,23 +99,21 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/profile.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+            <state relative-caret-position="253">
+              <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#h6#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Eprint_users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="259" column="101" selection-start-line="259" selection-start-column="101" selection-end-line="259" selection-end-column="101" />
+            <state relative-caret-position="163">
+              <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -114,62 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html">
+        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_history.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_search.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="25" selection-end-line="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Eprint_users/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="510">
+              <caret line="34" column="102" selection-start-line="34" selection-start-column="102" selection-end-line="34" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -206,15 +162,18 @@
         <option value="$PROJECT_DIR$/baseApp/templates/ground/base.html" />
         <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_search.html" />
         <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req_sent.html" />
-        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html" />
-        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html" />
-        <option value="$PROJECT_DIR$/Eprint_users/urls.py" />
         <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html" />
-        <option value="$PROJECT_DIR$/Eprint_users/forms.py" />
-        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html" />
-        <option value="$PROJECT_DIR$/Eprint_users/models.py" />
-        <option value="$PROJECT_DIR$/Eprint_users/views.py" />
+        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html" />
+        <option value="$PROJECT_DIR$/baseApp/static/ground/main.css" />
         <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html" />
+        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html" />
+        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html" />
+        <option value="$PROJECT_DIR$/Eprint_users/forms.py" />
+        <option value="$PROJECT_DIR$/Eprint_users/urls.py" />
+        <option value="$PROJECT_DIR$/Eprint_users/models.py" />
+        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/profile.html" />
+        <option value="$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_history.html" />
+        <option value="$PROJECT_DIR$/Eprint_users/views.py" />
       </list>
     </option>
   </component>
@@ -349,9 +308,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.26136363" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2659091" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="0" show_stripe_button="false" />
       <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.3289689" />
@@ -426,13 +386,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/baseApp/templates/ground/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="79" column="17" lean-forward="true" selection-start-line="79" selection-start-column="17" selection-end-line="79" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/baseApp/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -474,22 +427,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/acc_active_email.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/confirm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/baseApp/templates/ground/logout.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -505,51 +444,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/confirm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseApp/templates/ground/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="32" column="69" lean-forward="true" selection-start-line="32" selection-start-column="69" selection-end-line="32" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baseApp/static/ground/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="213" column="29" lean-forward="true" selection-start-line="213" selection-start-column="29" selection-end-line="213" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_ack.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+          <caret line="9" column="83" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="83" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/urls.py">
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end_host.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="31" column="59" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="59" />
+        <state relative-caret-position="210">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        <state relative-caret-position="45">
+          <caret line="36" column="61" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="36" selection-end-column="61" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/host_search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="25" column="34" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="25" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/pass_req.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="110" selection-start-line="10" selection-start-column="110" selection-end-line="10" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="28" column="116" selection-start-line="28" selection-start-column="116" selection-end-line="28" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="36" column="72" selection-start-line="36" selection-start-column="72" selection-end-line="36" selection-end-column="72" />
+        <state relative-caret-position="315">
+          <caret line="40" column="81" selection-start-line="40" selection-start-column="81" selection-end-line="40" selection-end-column="81" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+        <state relative-caret-position="178">
+          <caret line="89" column="78" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -557,22 +538,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/profile.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="259" column="101" selection-start-line="259" selection-start-column="101" selection-end-line="259" selection-end-column="101" />
+        <state relative-caret-position="253">
+          <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#h6#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_end.html">
+    <entry file="file://$PROJECT_DIR$/Eprint_users/templates/Eprint_users/trip_history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="70" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+        <state relative-caret-position="510">
+          <caret line="34" column="102" selection-start-line="34" selection-start-column="102" selection-end-line="34" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Eprint_users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="330" column="43" selection-start-line="330" selection-start-column="43" selection-end-line="330" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

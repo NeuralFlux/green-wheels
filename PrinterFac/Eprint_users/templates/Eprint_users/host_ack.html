@@ -7,7 +7,7 @@
     <div class="container-fluid col-md-8 content-below-nav">
         <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
             <center><h4 class="text-black">User {{ username }} has been added to the carpool. To check your trip's
-                status, kindly visit this link</h4></center>
+                status, kindly visit this <a href="{% url 'users-trip' %}">link</a></h4></center>
         </div>
     </div>
 {% endblock content %}

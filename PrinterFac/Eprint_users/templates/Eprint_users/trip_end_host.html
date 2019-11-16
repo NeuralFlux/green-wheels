@@ -1,0 +1,25 @@
+{% extends "ground/base.html" %}
+{% block content %}
+    <script>
+        const x = document.getElementsByTagName("BODY")[0];
+        x.classList.add("deep-blue-gradient");
+    </script>
+    <div class="container-fluid col-md-8 content-below-nav">
+        <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
+            <center>
+                {% if money %}
+                    <form method="post">
+                    {% csrf_token %}
+                    <h4 class="text-black">This trip has been completed for you and a total of ₹{{ money }} has been
+                        deducted from your wallet. Your balance is now: {{ bal }}</h4>
+                    Rating for Host: <input type="number" name="host_rating">
+                    <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                {% else %}
+                    <h4 class="text-black">Thank You for your feedback.</h4>
+                {% endif %}
+
+            </center>
+        </div>
+    </div>
+{% endblock content %}

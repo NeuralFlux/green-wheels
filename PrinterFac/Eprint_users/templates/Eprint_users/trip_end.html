@@ -6,8 +6,30 @@
     </script>
     <div class="container-fluid col-md-8 content-below-nav">
         <div style="transform: translateY(30vh)" class="align-center mt-5 p-3 ">
-            <center><h4 class="text-black">This trip has been completed for you and a total of ₹{{ money }} has been
-                deducted from your wallet. Your balance is now: {{ bal }}</h4></center>
+            <center>
+                {% if money %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <h4 class="text-black">This trip has been completed for you and a total of ₹{{ money }} has been
+                            deducted from your wallet. Your balance is now: {{ bal }}</h4>
+                        Rating for Host: <input type="number" name="host_rating">
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                {% elif money_host %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <h4 class="text-black">This trip has been completed for you and a total of ₹{{ money_host }} has
+                            been
+                            deducted from your wallet. Your balance is now: {{ bal }}</h4>
+                        Rating for Passenger 1: <input type="number" name="cust_rating1">
+                        Rating for Passenger 2: <input type="number" name="cust_rating2">
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </form>
+                {% else %}
+                    <h4 class="text-black">Thank You for using our services. <a href="{% url 'baseApp-home' %}">Home</a> </h4>
+                {% endif %}
+
+            </center>
         </div>
     </div>
 {% endblock content %}
